@@ -50,14 +50,14 @@ public final class NoConstructorsPlugin implements Plugin, TaskListener {
                 for (String className : annotatedClassNames) {
                     try {
                         JavaFileObject readableFile = fileManager.getJavaFileForInput(StandardLocation.CLASS_OUTPUT, className, JavaFileObject.Kind.CLASS);
-                        JavaFileObject writableFile = fileManager.getJavaFileForOutput(StandardLocation.CLASS_OUTPUT, className, JavaFileObject.Kind.CLASS, null);
-
                         ClassWriter cw;
                         try (InputStream in = readableFile.openInputStream()) {
                             ClassReader cr = new ClassReader(in);
                             cw = new ClassWriter(cr, 0);
                             cr.accept(new ConstructorRemoval(cw), 0);
                         }
+
+                        JavaFileObject writableFile = fileManager.getJavaFileForOutput(StandardLocation.CLASS_OUTPUT, className, JavaFileObject.Kind.CLASS, null);
                         try (OutputStream out = writableFile.openOutputStream()) {
                             out.write(cw.toByteArray());
                         }
