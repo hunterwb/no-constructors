@@ -1,0 +1,34 @@
+group 'com.hunterwb.noconstructors'
+version '0.1.0-SNAPSHOT'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'net.bytebuddy:byte-buddy-gradle-plugin:1.9.5'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'net.bytebuddy.byte-buddy'
+
+repositories {
+    mavenLocal()
+}
+
+configurations {
+    process
+}
+
+dependencies {
+    implementation 'com.hunterwb.noconstructors:noconstructors:0.1.0-SNAPSHOT'
+    process 'com.hunterwb.noconstructors:noconstructors-bytebuddy:0.1.0-SNAPSHOT'
+}
+
+byteBuddy {
+    transformation {
+        plugin = 'com.hunterwb.noconstructors.bytebuddy.NoConstructorsPlugin'
+        classPath = configurations.process
+    }
+}

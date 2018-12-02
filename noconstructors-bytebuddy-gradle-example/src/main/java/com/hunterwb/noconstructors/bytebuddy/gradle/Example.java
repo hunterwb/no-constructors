@@ -1,4 +1,4 @@
-package com.hunterwb.noconstructors.javac.maven;
+package com.hunterwb.noconstructors.bytebuddy.gradle;
 
 import com.hunterwb.noconstructors.NoConstructors;
 
