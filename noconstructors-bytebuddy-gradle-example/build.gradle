@@ -22,8 +22,8 @@ configurations {
 }
 
 dependencies {
-    implementation 'com.hunterwb.noconstructors:noconstructors:0.1.0-SNAPSHOT'
-    process 'com.hunterwb.noconstructors:noconstructors-bytebuddy:0.1.0-SNAPSHOT'
+    implementation "com.hunterwb.noconstructors:noconstructors:${project.version}"
+    process "com.hunterwb.noconstructors:noconstructors-bytebuddy:${project.version}"
 }
 
 byteBuddy {

@@ -1,27 +1,22 @@
-plugins {
-    id 'java'
+group 'com.hunterwb.noconstructors'
+version '0.1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+repositories {
+    mavenLocal()
 }
 
 configurations {
     process
 }
 
-group 'com.hunterwb.noconstructors'
-version '0.1.0-SNAPSHOT'
-
-sourceCompatibility = 9
-
-repositories {
-    mavenLocal()
-    mavenCentral()
-}
-
 dependencies {
-    implementation 'com.hunterwb.noconstructors:noconstructors:0.1.0-SNAPSHOT'
-    process 'com.hunterwb.noconstructors:noconstructors-javac:0.1.0-SNAPSHOT'
+    implementation "com.hunterwb.noconstructors:noconstructors:${project.version}"
+    process "com.hunterwb.noconstructors:noconstructors-javac:${project.version}"
 }
 
 compileJava {
     options.annotationProcessorPath = configurations.process
-    options.compilerArgs << '-Xplugin:NoConstructorsPlugin'
+    options.compilerArgs.add('-Xplugin:NoConstructorsPlugin')
 }
