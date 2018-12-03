@@ -50,16 +50,17 @@ public final class NoConstructorsPlugin implements Plugin, TaskListener {
                 for (String className : annotatedClassNames) {
                     try {
                         JavaFileObject readableFile = fileManager.getJavaFileForInput(StandardLocation.CLASS_OUTPUT, className, JavaFileObject.Kind.CLASS);
-                        ClassWriter cw;
+                        byte[] newClassData;
                         try (InputStream in = readableFile.openInputStream()) {
                             ClassReader cr = new ClassReader(in);
-                            cw = new ClassWriter(cr, 0);
+                            ClassWriter cw = new ClassWriter(cr, 0);
                             cr.accept(new ConstructorRemoval(cw), 0);
+                            newClassData = cw.toByteArray();
                         }
 
                         JavaFileObject writableFile = fileManager.getJavaFileForOutput(StandardLocation.CLASS_OUTPUT, className, JavaFileObject.Kind.CLASS, null);
                         try (OutputStream out = writableFile.openOutputStream()) {
-                            out.write(cw.toByteArray());
+                            out.write(newClassData);
                         }
                     } catch (IOException ex) {
                         throw new RuntimeException(ex);
@@ -73,6 +74,11 @@ public final class NoConstructorsPlugin implements Plugin, TaskListener {
 
         ConstructorRemoval(ClassVisitor cv) {
             super(Opcodes.ASM7, cv);
+        }
+
+        @Override
+        public void visit(int version, int access, String name, String signature, String superName, String[] interfaces) {
+            super.visit(version, access | Opcodes.ACC_FINAL, name, signature, superName, interfaces);
         }
 
         @Override

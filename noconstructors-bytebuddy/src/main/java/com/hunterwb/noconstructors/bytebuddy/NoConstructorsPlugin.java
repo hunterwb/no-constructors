@@ -14,6 +14,7 @@ import net.bytebuddy.implementation.Implementation;
 import net.bytebuddy.jar.asm.AnnotationVisitor;
 import net.bytebuddy.jar.asm.ClassVisitor;
 import net.bytebuddy.jar.asm.MethodVisitor;
+import net.bytebuddy.jar.asm.Opcodes;
 import net.bytebuddy.pool.TypePool;
 import net.bytebuddy.utility.OpenedClassReader;
 
@@ -44,6 +45,11 @@ public final class NoConstructorsPlugin implements Plugin {
                     int readerFlags
             ) {
                 return new ClassVisitor(OpenedClassReader.ASM_API, classVisitor) {
+
+                    @Override
+                    public void visit(int version, int access, String name, String signature, String superName, String[] interfaces) {
+                        super.visit(version, access | Opcodes.ACC_FINAL, name, signature, superName, interfaces);
+                    }
 
                     @Override
                     public AnnotationVisitor visitAnnotation(
