@@ -26,6 +26,10 @@ dependencies {
     process "com.hunterwb.noconstructors:noconstructors-bytebuddy:${project.version}"
 }
 
+compileJava {
+    options.compilerArgs.addAll(['--release', '6'])
+}
+
 byteBuddy {
     transformation {
         plugin = 'com.hunterwb.noconstructors.bytebuddy.NoConstructorsPlugin'
