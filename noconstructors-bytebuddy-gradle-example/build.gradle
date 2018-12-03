@@ -31,6 +31,9 @@ compileJava {
 }
 
 byteBuddy {
+    initialization {
+        entryPoint = 'REDEFINE'
+    }
     transformation {
         plugin = 'com.hunterwb.noconstructors.bytebuddy.NoConstructorsPlugin'
         classPath = configurations.process
