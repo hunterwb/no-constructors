@@ -16,3 +16,5 @@ jobs:
             cd noconstructors-javac && mvn install --batch-mode --errors && cd ..
             cd noconstructors-bytebuddy-maven-example && mvn install --batch-mode --errors && cd ..
             cd noconstructors-javac-maven-example && mvn install --batch-mode --errors && cd ..
+            cd noconstructors-bytebuddy-gradle-example && gradle build --stacktrace && cd ..
+            cd noconstructors-javac-gradle-example && gradle build --stacktrace && cd ..
