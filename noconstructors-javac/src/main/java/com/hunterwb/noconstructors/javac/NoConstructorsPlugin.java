@@ -53,7 +53,7 @@ public final class NoConstructorsPlugin implements Plugin, TaskListener {
                         byte[] newClassData;
                         try (InputStream in = readableFile.openInputStream()) {
                             ClassReader cr = new ClassReader(in);
-                            ClassWriter cw = new ClassWriter(cr, 0);
+                            ClassWriter cw = new ClassWriter(0);
                             cr.accept(new ConstructorRemoval(cw), 0);
                             newClassData = cw.toByteArray();
                         }
