@@ -31,7 +31,7 @@
                     <annotationProcessorPaths>
                         <path>
                             <groupId>com.hunterwb.noconstructors</groupId>
-                            <artifactId>noconstructors-javac</artifactId>
+                            <artifactId>noconstructors-javac-plugin</artifactId>
                             <version>${project.version}</version>
                         </path>
                     </annotationProcessorPaths>

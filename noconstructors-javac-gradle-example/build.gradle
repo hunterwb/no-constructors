@@ -13,7 +13,7 @@ configurations {
 
 dependencies {
     implementation "com.hunterwb.noconstructors:noconstructors:${project.version}"
-    process "com.hunterwb.noconstructors:noconstructors-javac:${project.version}"
+    process "com.hunterwb.noconstructors:noconstructors-javac-plugin:${project.version}"
 }
 
 compileJava {

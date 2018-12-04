@@ -2,7 +2,6 @@ package com.hunterwb.noconstructors.bytebuddy;
 
 import com.hunterwb.noconstructors.NoConstructors;
 import net.bytebuddy.asm.AsmVisitorWrapper;
-import net.bytebuddy.asm.MemberRemoval;
 import net.bytebuddy.build.Plugin;
 import net.bytebuddy.description.field.FieldDescription;
 import net.bytebuddy.description.field.FieldList;

@@ -48,7 +48,7 @@
                             <transformations>
                                 <transformation>
                                     <groupId>com.hunterwb.noconstructors</groupId>
-                                    <artifactId>noconstructors-bytebuddy</artifactId>
+                                    <artifactId>noconstructors-bytebuddy-plugin</artifactId>
                                     <version>${project.version}</version>
                                     <plugin>com.hunterwb.noconstructors.bytebuddy.NoConstructorsPlugin</plugin>
                                 </transformation>

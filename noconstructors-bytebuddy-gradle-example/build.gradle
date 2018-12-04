@@ -23,7 +23,7 @@ configurations {
 
 dependencies {
     implementation "com.hunterwb.noconstructors:noconstructors:${project.version}"
-    process "com.hunterwb.noconstructors:noconstructors-bytebuddy:${project.version}"
+    process "com.hunterwb.noconstructors:noconstructors-bytebuddy-plugin:${project.version}"
 }
 
 compileJava {
